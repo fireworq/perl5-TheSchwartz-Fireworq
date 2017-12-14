@@ -7,6 +7,9 @@ use Class::Load qw(load_class);
 use URI::Escape qw(uri_escape);
 use JSON::XS qw(encode_json);
 use Furl;
+use Class::Accessor::Lite::Lazy (
+    ro_lazy => [qw(agent)],
+);
 
 sub new {
     my ($class, %args) = @_;
@@ -29,7 +32,7 @@ sub insert {
     my $worker_class = load_class($funcname);
 
     my $url = $self->{server} . '/job/' . uri_escape $funcname;
-    $self->_client->post(
+    $self->agent->post(
         $url,
         [ 'Content-Type' => 'application/json' ],
         encode_json({
@@ -56,11 +59,9 @@ sub set_floor { }
 sub set_batch_size { }
 sub set_strict_remove_ability { }
 
-sub _client {
+sub _build_agent {
     my ($self) = @_;
-    return $self->{_client} //= Furl->new(
-        agent => $self->{user_agent},
-    );
+    return Furl->new;
 }
 
 1;

@@ -1,4 +1,4 @@
-requires 'Class::Accessor::Lite';
+requires 'Class::Accessor::Lite::Lazy';
 requires 'Class::Load';
 requires 'URI::Escape';
 requires 'JSON::XS';
