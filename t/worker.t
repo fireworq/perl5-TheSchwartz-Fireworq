@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 4;
+use Test::More tests => 5;
 use Plack::Test;
 
 use Plack::Builder;
@@ -109,5 +109,18 @@ test_psgi $app, sub {
         my $res = $cb->($req);
         ok $res->is_server_error;
         ok !$res->{status};
+    };
+
+    subtest 'wrong method' => sub {
+        my $req = PUT '/work',
+            'Content-Type' => 'application/json',
+            Content => encode_json({
+                funcname  => 'My::Worker1',
+                arg       => { id => 7 },
+                run_after => time,
+            });
+
+        my $res = $cb->($req);
+        is $res->code, 405;
     };
 };

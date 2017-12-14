@@ -18,6 +18,9 @@ sub call {
 
 sub _handle {
     my ($self, $req) = @_;
+    return [ 405, [], [ 'Method Not Allowed' ] ]
+        unless $req->method eq 'POST';
+
     my $payload = decode_json($req->content);
 
     my $worker = load_class($payload->{funcname});
