@@ -2,6 +2,8 @@ package TheSchwartz::Fireworq;
 use strict;
 use warnings;
 
+our $VERSION = '0.0.1';
+
 use Scalar::Util qw(blessed);
 use Class::Load qw(load_class);
 use URI::Escape qw(uri_escape);
@@ -68,7 +70,7 @@ sub _build_agent {
 __END__
 =head1 NAME
 
-TheSchwartz::Fireworq - TheSchwartz interface for Fireworq.
+TheSchwartz::Fireworq - L<TheSchwartz> interface for L<Fireworq|https://github.com/fireworq/fireworq>.
 
 =head1 SYNOPSIS
 
@@ -105,5 +107,19 @@ TheSchwartz::Fireworq - TheSchwartz interface for Fireworq.
             pah => '/work';
         $app;
     };
+
+=head1 AUTHOR
+
+INA Lintaro E<lt>tarao.gnn@gmail.comE<gt>
+
+=head1 SEE ALSO
+
+=over 4
+
+=item L<TheSchwartz>
+
+=item L<TheSchwartz::Simple>
+
+=back
 
 =cut
