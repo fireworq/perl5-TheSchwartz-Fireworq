@@ -34,7 +34,7 @@ TheSchwartz::Fireworq - [TheSchwartz](https://metacpan.org/pod/TheSchwartz) inte
     my $app = sub { ... };
     builder {
         enable 'TheSchwartz::Fireworq',
-            pah => '/work';
+            path => '/work';
         $app;
     };
 

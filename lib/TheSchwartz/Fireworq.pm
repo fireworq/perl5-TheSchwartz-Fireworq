@@ -104,7 +104,7 @@ TheSchwartz::Fireworq - L<TheSchwartz> interface for L<Fireworq|https://github.c
     my $app = sub { ... };
     builder {
         enable 'TheSchwartz::Fireworq',
-            pah => '/work';
+            path => '/work';
         $app;
     };
 
